@@ -16,12 +16,19 @@
 
 package com.pawandubey.texus;
 
+import com.pawandubey.texus.actions.AboutAction;
 import com.pawandubey.texus.actions.NewAction;
 import com.pawandubey.texus.actions.OpenAction;
 import com.pawandubey.texus.actions.SaveAction;
-import java.awt.event.KeyListener;
-import javax.swing.JFrame;
+import javax.swing.ActionMap;
+import javax.swing.JButton;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
+import javax.swing.JScrollPane;
 import javax.swing.JTextPane;
+import javax.swing.JToolBar;
+import javax.swing.text.DefaultEditorKit;
 
 /**
  *
@@ -29,6 +36,10 @@ import javax.swing.JTextPane;
  */
 public class Texus extends javax.swing.JFrame {
     private static final long serialVersionUID = 1L;
+
+    public static long getSerialVersionUID() {
+        return serialVersionUID;
+    }
 
     /**
      * Creates new form Texus
@@ -48,20 +59,27 @@ public class Texus extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jScrollPane2 = new javax.swing.JScrollPane();
+        scrollpane = new javax.swing.JScrollPane();
         editor = new javax.swing.JTextPane();
-        jToolBar1 = new javax.swing.JToolBar();
-        newtool = new javax.swing.JButton();
-        opentool = new javax.swing.JButton();
-        savetool = new javax.swing.JButton();
-        jMenuBar2 = new javax.swing.JMenuBar();
-        jMenu4 = new javax.swing.JMenu();
+        toolbar = new javax.swing.JToolBar();
+        newTool = new javax.swing.JButton();
+        openTool = new javax.swing.JButton();
+        saveTool = new javax.swing.JButton();
+        cutTool = new javax.swing.JButton();
+        copyTool = new javax.swing.JButton();
+        pasteTool = new javax.swing.JButton();
+        menubar = new javax.swing.JMenuBar();
+        file = new javax.swing.JMenu();
         newfile = new javax.swing.JMenuItem();
         open = new javax.swing.JMenuItem();
         save = new javax.swing.JMenuItem();
         saveas = new javax.swing.JMenuItem();
         exit = new javax.swing.JMenuItem();
-        jMenu5 = new javax.swing.JMenu();
+        edit = new javax.swing.JMenu();
+        cut = new javax.swing.JMenuItem();
+        copy = new javax.swing.JMenuItem();
+        paste = new javax.swing.JMenuItem();
+        help = new javax.swing.JMenu();
         about = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -79,72 +97,109 @@ public class Texus extends javax.swing.JFrame {
                 editorKeyTyped(evt);
             }
         });
-        jScrollPane2.setViewportView(editor);
+        scrollpane.setViewportView(editor);
 
-        jToolBar1.setFloatable(false);
-        jToolBar1.setRollover(true);
+        toolbar.setFloatable(false);
+        toolbar.setRollover(true);
 
-        newtool.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/cc/black/png/doc_empty_icon&24.png"))); // NOI18N
-        newtool.setFocusable(false);
-        newtool.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        newtool.setOpaque(false);
-        newtool.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jToolBar1.add(newtool);
+        newTool.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/cc/black/png/doc_empty_icon&24.png"))); // NOI18N
+        newTool.setFocusable(false);
+        newTool.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        newTool.setOpaque(false);
+        newTool.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        toolbar.add(newTool);
 
-        opentool.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/cc/black/png/folder_open_icon&24.png"))); // NOI18N
-        opentool.setFocusable(false);
-        opentool.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        opentool.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jToolBar1.add(opentool);
+        openTool.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/cc/black/png/folder_open_icon&24.png"))); // NOI18N
+        openTool.setFocusable(false);
+        openTool.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        openTool.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        toolbar.add(openTool);
 
-        savetool.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/cc/black/png/save_icon&24.png"))); // NOI18N
-        savetool.setEnabled(false);
-        savetool.setFocusable(false);
-        savetool.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        savetool.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jToolBar1.add(savetool);
+        saveTool.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/cc/black/png/save_icon&24.png"))); // NOI18N
+        saveTool.setEnabled(false);
+        saveTool.setFocusable(false);
+        saveTool.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        saveTool.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        toolbar.add(saveTool);
 
-        jMenu4.setText("File");
+        cutTool.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/cc/black/png/clipboard_cut_icon&24.png"))); // NOI18N
+        cutTool.setFocusable(false);
+        cutTool.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        cutTool.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        toolbar.add(cutTool);
+
+        copyTool.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/cc/black/png/clipboard_copy_icon&24.png"))); // NOI18N
+        copyTool.setFocusable(false);
+        copyTool.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        copyTool.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        toolbar.add(copyTool);
+
+        pasteTool.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/cc/black/png/clipboard_past_icon&24.png"))); // NOI18N
+        pasteTool.setFocusable(false);
+        pasteTool.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        pasteTool.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        toolbar.add(pasteTool);
+
+        file.setText("File");
 
         newfile.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_N, java.awt.event.InputEvent.CTRL_MASK));
         newfile.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/cc/black/png/doc_empty_icon&16.png"))); // NOI18N
         newfile.setText("New");
-        jMenu4.add(newfile);
+        file.add(newfile);
 
         open.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_O, java.awt.event.InputEvent.CTRL_MASK));
         open.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/cc/black/png/folder_open_icon&16.png"))); // NOI18N
         open.setText("Open");
-        jMenu4.add(open);
+        file.add(open);
 
         save.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, java.awt.event.InputEvent.CTRL_MASK));
         save.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/cc/black/png/save_icon&16.png"))); // NOI18N
         save.setText("Save");
         save.setEnabled(false);
-        jMenu4.add(save);
+        file.add(save);
 
         saveas.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, java.awt.event.InputEvent.SHIFT_MASK | java.awt.event.InputEvent.CTRL_MASK));
         saveas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/cc/black/png/save_icon&16.png"))); // NOI18N
         saveas.setText("Save As");
         saveas.setEnabled(false);
-        jMenu4.add(saveas);
+        file.add(saveas);
 
         exit.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_X, java.awt.event.InputEvent.CTRL_MASK));
         exit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/cc/black/png/app_window_cross_icon&16.png"))); // NOI18N
         exit.setText("Exit");
-        jMenu4.add(exit);
+        file.add(exit);
 
-        jMenuBar2.add(jMenu4);
+        menubar.add(file);
 
-        jMenu5.setText("Help");
+        edit.setText("Edit");
+
+        cut.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_X, java.awt.event.InputEvent.CTRL_MASK));
+        cut.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/cc/black/png/clipboard_cut_icon&16.png"))); // NOI18N
+        cut.setText("Cut");
+        edit.add(cut);
+
+        copy.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.CTRL_MASK));
+        copy.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/cc/black/png/clipboard_copy_icon&16.png"))); // NOI18N
+        copy.setText("Copy");
+        edit.add(copy);
+
+        paste.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_V, java.awt.event.InputEvent.CTRL_MASK));
+        paste.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/cc/black/png/clipboard_past_icon&16.png"))); // NOI18N
+        paste.setText("Paste");
+        edit.add(paste);
+
+        menubar.add(edit);
+
+        help.setText("Help");
 
         about.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_H, java.awt.event.InputEvent.CTRL_MASK));
         about.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/cc/black/png/info_icon&16.png"))); // NOI18N
         about.setText("About");
-        jMenu5.add(about);
+        help.add(about);
 
-        jMenuBar2.add(jMenu5);
+        menubar.add(help);
 
-        setJMenuBar(jMenuBar2);
+        setJMenuBar(menubar);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -152,16 +207,16 @@ public class Texus extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 816, Short.MAX_VALUE)
+                .addComponent(scrollpane, javax.swing.GroupLayout.DEFAULT_SIZE, 816, Short.MAX_VALUE)
                 .addContainerGap())
-            .addComponent(jToolBar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(toolbar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(toolbar, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 414, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(scrollpane, javax.swing.GroupLayout.PREFERRED_SIZE, 414, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -169,21 +224,31 @@ public class Texus extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void editorKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_editorKeyTyped
-        save.setEnabled(true);
-        savetool.setEnabled(true);
-        saveas.setEnabled(true);
+        getSave().setEnabled(true);
+        getSavetool().setEnabled(true);
+        getSaveas().setEnabled(true);
     }//GEN-LAST:event_editorKeyTyped
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        saveaction.setTexus(this);
-        openaction.setTexus(this);
+        setActionMap(this.getEditor().getActionMap());
         
-        save.addActionListener(saveaction);
-        savetool.addActionListener(saveaction);
-        open.addActionListener(openaction);
-        opentool.addActionListener(openaction);
-        newfile.addActionListener(newaction);
-        newtool.addActionListener(newaction);
+        getSaveaction().setTexus(this);
+        getOpenaction().setTexus(this);
+        
+        about.addActionListener(aboutaction);
+            
+        getSave().addActionListener(getSaveaction());
+        getSavetool().addActionListener(getSaveaction());
+        getOpen().addActionListener(getOpenaction());
+        getOpentool().addActionListener(getOpenaction());
+        getNewfile().addActionListener(getNewaction());
+        getNewtool().addActionListener(getNewaction());
+        getCut().addActionListener(getActionMap().get(DefaultEditorKit.cutAction));
+        getCuttool().addActionListener(getActionMap().get(DefaultEditorKit.cutAction));
+        getCopy().addActionListener(getActionMap().get(DefaultEditorKit.copyAction));
+        getCopytool().addActionListener(getActionMap().get(DefaultEditorKit.copyAction));
+        getPaste().addActionListener(getActionMap().get(DefaultEditorKit.pasteAction));
+        getPastetool().addActionListener(getActionMap().get(DefaultEditorKit.pasteAction));
     }//GEN-LAST:event_formWindowOpened
 
     /**
@@ -226,29 +291,228 @@ public class Texus extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem about;
+    private javax.swing.JMenuItem copy;
+    private javax.swing.JButton copyTool;
+    private javax.swing.JMenuItem cut;
+    private javax.swing.JButton cutTool;
+    private javax.swing.JMenu edit;
     private javax.swing.JTextPane editor;
     private javax.swing.JMenuItem exit;
-    private javax.swing.JMenu jMenu4;
-    private javax.swing.JMenu jMenu5;
-    private javax.swing.JMenuBar jMenuBar2;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JToolBar jToolBar1;
+    private javax.swing.JMenu file;
+    private javax.swing.JMenu help;
+    private javax.swing.JMenuBar menubar;
+    private javax.swing.JButton newTool;
     private javax.swing.JMenuItem newfile;
-    private javax.swing.JButton newtool;
     private javax.swing.JMenuItem open;
-    private javax.swing.JButton opentool;
+    private javax.swing.JButton openTool;
+    private javax.swing.JMenuItem paste;
+    private javax.swing.JButton pasteTool;
     private javax.swing.JMenuItem save;
+    private javax.swing.JButton saveTool;
     private javax.swing.JMenuItem saveas;
-    private javax.swing.JButton savetool;
+    private javax.swing.JScrollPane scrollpane;
+    private javax.swing.JToolBar toolbar;
     // End of variables declaration//GEN-END:variables
-    private KeyListener keyListener;
+    private ActionMap actionMap;
     private final SaveAction saveaction = new SaveAction();
     private final OpenAction openaction = new OpenAction();
     private final NewAction newaction = new NewAction();
-    
+    private final AboutAction aboutaction = new AboutAction();
     
     public JTextPane getEditor(){
         return this.editor;
+    }
+
+    public JMenuItem getAbout() {
+        return about;
+    }
+
+    public void setAbout(JMenuItem about) {
+        this.about = about;
+    }
+
+    public JMenuItem getCopy() {
+        return copy;
+    }
+
+    public void setCopy(JMenuItem copy) {
+        this.copy = copy;
+    }
+
+    public JButton getCopytool() {
+        return copyTool;
+    }
+
+    public void setCopytool(JButton copytool) {
+        this.copyTool = copytool;
+    }
+
+    public JMenuItem getCut() {
+        return cut;
+    }
+
+    public void setCut(JMenuItem cut) {
+        this.cut = cut;
+    }
+
+    public JButton getCuttool() {
+        return cutTool;
+    }
+
+    public void setCuttool(JButton cuttool) {
+        this.cutTool = cuttool;
+    }
+
+    public JMenu getEdit() {
+        return edit;
+    }
+
+    public void setEdit(JMenu edit) {
+        this.edit = edit;
+    }
+
+    public void setEditor(JTextPane editor) {
+        this.editor = editor;
+    }
+
+    public JMenuItem getExit() {
+        return exit;
+    }
+
+    public void setExit(JMenuItem exit) {
+        this.exit = exit;
+    }
+
+    public JMenu getFile() {
+        return file;
+    }
+
+    public void setFile(JMenu file) {
+        this.file = file;
+    }
+
+    public JMenu getHelp() {
+        return help;
+    }
+
+    public void setHelp(JMenu help) {
+        this.help = help;
+    }
+
+    public JMenuBar getMenubar() {
+        return menubar;
+    }
+
+    public void setMenubar(JMenuBar menubar) {
+        this.menubar = menubar;
+    }
+
+    public JMenuItem getNewfile() {
+        return newfile;
+    }
+
+    public void setNewfile(JMenuItem newfile) {
+        this.newfile = newfile;
+    }
+
+    public JButton getNewtool() {
+        return newTool;
+    }
+
+    public void setNewtool(JButton newtool) {
+        this.newTool = newtool;
+    }
+
+    public JMenuItem getOpen() {
+        return open;
+    }
+
+    public void setOpen(JMenuItem open) {
+        this.open = open;
+    }
+
+    public JButton getOpentool() {
+        return openTool;
+    }
+
+    public void setOpentool(JButton opentool) {
+        this.openTool = opentool;
+    }
+
+    public JMenuItem getPaste() {
+        return paste;
+    }
+
+    public void setPaste(JMenuItem paste) {
+        this.paste = paste;
+    }
+
+    public JButton getPastetool() {
+        return pasteTool;
+    }
+
+    public void setPastetool(JButton pastetool) {
+        this.pasteTool = pastetool;
+    }
+
+    public JMenuItem getSave() {
+        return save;
+    }
+
+    public void setSave(JMenuItem save) {
+        this.save = save;
+    }
+
+    public JMenuItem getSaveas() {
+        return saveas;
+    }
+
+    public void setSaveas(JMenuItem saveas) {
+        this.saveas = saveas;
+    }
+
+    public JButton getSavetool() {
+        return saveTool;
+    }
+
+    public void setSavetool(JButton savetool) {
+        this.saveTool = savetool;
+    }
+
+    public JScrollPane getScrollpane() {
+        return scrollpane;
+    }
+
+    public void setScrollpane(JScrollPane scrollpane) {
+        this.scrollpane = scrollpane;
+    }
+
+    public JToolBar getToolbar() {
+        return toolbar;
+    }
+
+    public void setToolbar(JToolBar toolbar) {
+        this.toolbar = toolbar;
+    }
+
+    public ActionMap getActionMap() {
+        return actionMap;
+    }
+
+    public void setActionMap(ActionMap actionMap) {
+        this.actionMap = actionMap;
+    }
+
+    public SaveAction getSaveaction() {
+        return saveaction;
+    }
+
+    public OpenAction getOpenaction() {
+        return openaction;
+    }
+
+    public NewAction getNewaction() {
+        return newaction;
     }
     
     

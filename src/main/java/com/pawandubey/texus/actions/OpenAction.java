@@ -20,7 +20,6 @@ import com.pawandubey.texus.Texus;
 import java.awt.event.ActionEvent;
 import java.io.File;
 import java.io.FileReader;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
