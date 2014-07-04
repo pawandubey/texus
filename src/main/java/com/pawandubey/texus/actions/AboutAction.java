@@ -27,7 +27,7 @@ import javax.swing.JOptionPane;
 public class AboutAction extends AbstractAction{
     private static final long serialVersionUID = 5L;
     private final String aboutMessage = "<html><center><h2>Texus Editor</h2><br><br><h4>A Simple Java Text Editor. Made with NetBeans and Maven.</h4><br><br>"
-            + "Copy Right 2014 Pawan Dubey (pawandubey@outlook.com)<br>Licensed Under Apache License V2</center>";
+            + "Copy Right 2014 Pawan Dubey (pawandubey@outlook.com)<br>Licensed Under <a href=http://www.apache.org/licenses/LICENSE-2.0>Apache License V2</a></center>";
     
     @Override
     public void actionPerformed(ActionEvent e) {
