@@ -69,6 +69,7 @@ public class Texus extends javax.swing.JFrame {
         newTool = new javax.swing.JButton();
         openTool = new javax.swing.JButton();
         saveTool = new javax.swing.JButton();
+        jSeparator1 = new javax.swing.JToolBar.Separator();
         cutTool = new javax.swing.JButton();
         copyTool = new javax.swing.JButton();
         pasteTool = new javax.swing.JButton();
@@ -106,41 +107,56 @@ public class Texus extends javax.swing.JFrame {
         toolbar.setFloatable(false);
         toolbar.setRollover(true);
 
-        newTool.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/cc/black/png/doc_empty_icon&24.png"))); // NOI18N
+        newTool.setIcon(new javax.swing.ImageIcon("C:\\Users\\Mahe\\Downloads\\PNG\\32\\Gnome-Document-New-32.png")); // NOI18N
+        newTool.setBorderPainted(false);
         newTool.setFocusable(false);
         newTool.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         newTool.setOpaque(false);
         newTool.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         toolbar.add(newTool);
 
-        openTool.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/cc/black/png/folder_open_icon&24.png"))); // NOI18N
+        openTool.setIcon(new javax.swing.ImageIcon("C:\\Users\\Mahe\\Downloads\\PNG\\32\\Gnome-Document-Open-32.png")); // NOI18N
+        openTool.setBorderPainted(false);
         openTool.setFocusable(false);
         openTool.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        openTool.setOpaque(false);
         openTool.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         toolbar.add(openTool);
 
-        saveTool.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/cc/black/png/save_icon&24.png"))); // NOI18N
+        saveTool.setIcon(new javax.swing.ImageIcon("C:\\Users\\Mahe\\Downloads\\PNG\\32\\Gnome-Document-Save-32.png")); // NOI18N
+        saveTool.setBorderPainted(false);
         saveTool.setEnabled(false);
         saveTool.setFocusable(false);
         saveTool.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        saveTool.setOpaque(false);
         saveTool.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         toolbar.add(saveTool);
 
-        cutTool.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/cc/black/png/clipboard_cut_icon&24.png"))); // NOI18N
+        jSeparator1.setForeground(new java.awt.Color(102, 102, 102));
+        jSeparator1.setSeparatorSize(new java.awt.Dimension(10, 50));
+        toolbar.add(jSeparator1);
+
+        cutTool.setIcon(new javax.swing.ImageIcon("C:\\Users\\Mahe\\Downloads\\PNG\\32\\Gnome-Edit-Cut-32.png")); // NOI18N
+        cutTool.setBorderPainted(false);
         cutTool.setFocusable(false);
         cutTool.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        cutTool.setOpaque(false);
         cutTool.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         toolbar.add(cutTool);
 
-        copyTool.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/cc/black/png/clipboard_copy_icon&24.png"))); // NOI18N
+        copyTool.setIcon(new javax.swing.ImageIcon("C:\\Users\\Mahe\\Downloads\\PNG\\32\\Gnome-Edit-Copy-32.png")); // NOI18N
+        copyTool.setBorderPainted(false);
         copyTool.setFocusable(false);
         copyTool.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        copyTool.setOpaque(false);
         copyTool.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         toolbar.add(copyTool);
 
-        pasteTool.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/cc/black/png/clipboard_past_icon&24.png"))); // NOI18N
+        pasteTool.setIcon(new javax.swing.ImageIcon("C:\\Users\\Mahe\\Downloads\\PNG\\32\\Gnome-Edit-Paste-32.png")); // NOI18N
+        pasteTool.setBorderPainted(false);
         pasteTool.setFocusable(false);
         pasteTool.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        pasteTool.setOpaque(false);
         pasteTool.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         toolbar.add(pasteTool);
 
@@ -209,18 +225,18 @@ public class Texus extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(toolbar, javax.swing.GroupLayout.DEFAULT_SIZE, 942, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(scrollpane, javax.swing.GroupLayout.DEFAULT_SIZE, 816, Short.MAX_VALUE)
+                .addComponent(scrollpane)
                 .addContainerGap())
-            .addComponent(toolbar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addComponent(toolbar, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(scrollpane, javax.swing.GroupLayout.PREFERRED_SIZE, 414, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(scrollpane, javax.swing.GroupLayout.DEFAULT_SIZE, 436, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -260,7 +276,7 @@ public class Texus extends javax.swing.JFrame {
      */
     public static void main(String args[]) {
         try {
-            UIManager.setLookAndFeel("com.seaglasslookandfeel.SeaGlassLookAndFeel");
+            UIManager.setLookAndFeel("org.pushingpixels.substance.api.skin.SubstanceGraphiteLookAndFeel");
         }
         catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException e) {
             e.printStackTrace();
@@ -287,6 +303,7 @@ public class Texus extends javax.swing.JFrame {
     private javax.swing.JMenuItem exit;
     private javax.swing.JMenu file;
     private javax.swing.JMenu help;
+    private javax.swing.JToolBar.Separator jSeparator1;
     private javax.swing.JMenuBar menubar;
     private javax.swing.JButton newTool;
     private javax.swing.JMenuItem newfile;

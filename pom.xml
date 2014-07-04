@@ -36,6 +36,11 @@
             <artifactId>seaglasslookandfeel</artifactId>
             <version>0.2</version>
         </dependency>
+        <dependency>
+            <groupId>com.github.insubstantial</groupId>
+            <artifactId>substance</artifactId>
+            <version>7.2.1</version>
+        </dependency>
     </dependencies>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
